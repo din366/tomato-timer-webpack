@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/din366/tomato-timer.git"
+    "url": "git+https://github.com/din366/tomato-timer-webpack.git"
   },
   "keywords": [],
   "author": "Alex Din",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/din366/tomato-timer/issues"
+    "url": "https://github.com/din366/tomato-timer-webpack/issues"
   },
-  "homepage": "https://github.com/din366/tomato-timer#readme",
+  "homepage": "https://github.com/din366/tomato-timer-webpack#readme",
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
