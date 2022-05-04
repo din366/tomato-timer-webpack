@@ -1,4 +1,5 @@
 import './../scss/index.scss';
+import './tasks';
 
 let count = 0;
 const imp = ['default', 'important', 'so-so'];

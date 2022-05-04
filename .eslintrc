@@ -4,7 +4,9 @@
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended"
+  ],
   "parserOptions": {
     "parser": "babel-eslint",
     "ecmaVersion": "latest",
@@ -266,8 +268,8 @@
       {
         "require": {
           "FunctionDeclaration": true,
-          "MethodDefinition": true,
-          "ClassDeclaration": true
+          "MethodDefinition": false,
+          "ClassDeclaration": false
         }
       }
     ],
