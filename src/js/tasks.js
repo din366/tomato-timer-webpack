@@ -1,4 +1,4 @@
-class Task {
+export class CreateTask {
   #taskCount;
   #taskName;
   #taskId;
@@ -14,5 +14,21 @@ class Task {
 
   set changeName(name) {
     this.#taskName = name;
+  }
+
+  get taskId() {
+    return this.#taskId;
+  }
+
+  get taskName() {
+    return this.#taskName;
+  }
+
+  get taskCount() {
+    return this.#taskCount;
+  }
+
+  set taskCount(param) {
+    this.#taskCount++;
   }
 }
