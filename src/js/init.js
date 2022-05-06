@@ -23,7 +23,7 @@ export class Init {
 
   runTask(taskId) {
     const item = this.tasksArray.find((item) => taskId === item.taskId);
-    try { // 
+    try {
       this.runTaskTime(item);
     } catch (err) {
       console.error('Такой задачи не существует.');

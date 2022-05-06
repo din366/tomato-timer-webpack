@@ -40,5 +40,5 @@ console.log(test.test);
 
 
 /* View the running task in the console */
-/* test.runTask(newTask.taskId); */ // ! uncomment the line
+test.runTask(newTask.taskId); // ! uncomment the line
 

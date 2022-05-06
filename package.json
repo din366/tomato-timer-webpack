@@ -2,7 +2,7 @@
   "name": "tomato-timer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/js/main.js",
   "scripts": {
     "start": "set NODE_ENV=development&&webpack serve --open",
     "dev": "set NODE_ENV=development&&webpack",
