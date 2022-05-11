@@ -57,7 +57,14 @@ fieldset {
   width: 147px;
   height: 55px;
   border: 0;
+}
 
+.button:disabled {
+  background-color: #944e58;
+}
+
+.button:disabled:hover {
+  background-color: #944e58;
 }
 
 .button-primary {
@@ -106,6 +113,7 @@ fieldset {
 
 .button-importance.default {
   background-color: #A9BB30;
+
   &:hover {
     background-color: darker(#A9BB30, 1);
   }
@@ -113,6 +121,7 @@ fieldset {
 
 .button-importance.so-so {
   background-color: #F3EC34;
+
   &:hover {
     background-color: darker(#F3EC34, 1);
   }
@@ -120,6 +129,7 @@ fieldset {
 
 .button-importance.important {
   background-color: #DC0D27;
+
   &:hover {
     background-color: darker(#DC0D27, 1);
   }

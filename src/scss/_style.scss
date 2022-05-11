@@ -58,6 +58,7 @@
   line-height: 183px;
   margin-bottom: 36px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: 1s color;
 }
 
 .window__buttons {
@@ -152,6 +153,7 @@
   background-color: transparent;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   padding: 4px 5px;
+
   &:hover {
     background-color: rgba(68, 220, 13, 0.15);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -162,6 +164,7 @@
   background-color: rgba(220, 13, 39, 0.15);
   transition: background-color 0.3s ease-in-out;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   &:hover {
     background-color: darker(rgba(220, 13, 39, 0.3), 1);
   }

@@ -408,6 +408,14 @@ fieldset {
   border: 0;
 }
 
+.button:disabled {
+  background-color: #944e58;
+}
+
+.button:disabled:hover {
+  background-color: #944e58;
+}
+
 .button-primary {
   background-color: #DC0D27;
   color: #ffffff;
@@ -537,6 +545,7 @@ fieldset {
   line-height: 183px;
   margin-bottom: 36px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: 1s color;
 }
 
 .window__buttons {
@@ -700,9 +709,11 @@ fieldset {
 
 .modal-delete__title {
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: 700;
+  font-size: 20px;
   line-height: 17px;
+  color: black;
+  margin-bottom: 20px;
 }
 
 .modal-delete__close-button {
@@ -716,11 +727,10 @@ fieldset {
 }
 
 .modal-delete__delete-button {
-  height: 50px;
   width: 162px;
-  padding: 19px 50px;
+  padding: 13px 20px;
   border: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .modal-delete__cancel-button {
@@ -737,7 +747,8 @@ fieldset {
   position: absolute;
   display: none;
   flex-direction: column;
-  height: 83px;
+  /* height: 83px; */
+  height: 50px;
   width: 166px;
   padding: 5px 1px 0 1px;
   right: 0;
@@ -783,4 +794,8 @@ fieldset {
   background-color: #E5E5E5;
 }
 
-/*# sourceMappingURL=main61d201c1c0a547a6b1dc.css.map*/
+.popup-show {
+  display: block;
+}
+
+/*# sourceMappingURL=mainbde93e847a21f5721d22.css.map*/

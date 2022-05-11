@@ -1,6 +1,29 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@babel/polyfill/lib/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@babel/polyfill/lib/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+__webpack_require__(/*! ./noConflict */ "./node_modules/@babel/polyfill/lib/noConflict.js");
+
+var _global = _interopRequireDefault(__webpack_require__(/*! core-js/library/fn/global */ "./node_modules/core-js/library/fn/global.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+if (_global["default"]._babelPolyfill && typeof console !== "undefined" && console.warn) {
+  console.warn("@babel/polyfill is loaded more than once on this page. This is probably not desirable/intended " + "and may have consequences if different versions of the polyfills are applied sequentially. " + "If you do need to load the polyfill more than once, use @babel/polyfill/noConflict " + "instead to bypass the warning.");
+}
+
+_global["default"]._babelPolyfill = true;
+
+/***/ }),
+
 /***/ "./node_modules/@babel/polyfill/lib/noConflict.js":
 /*!********************************************************!*\
   !*** ./node_modules/@babel/polyfill/lib/noConflict.js ***!
@@ -40,186 +63,329 @@ __webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerat
 
 /***/ }),
 
-/***/ "./src/js/init.js":
-/*!************************!*\
-  !*** ./src/js/init.js ***!
-  \************************/
+/***/ "./src/js/controller.js":
+/*!******************************!*\
+  !*** ./src/js/controller.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Init": () => (/* binding */ Init)
+/* harmony export */   "controllerTomato": () => (/* binding */ controllerTomato)
 /* harmony export */ });
+/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main */ "./src/js/main.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
 
-function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
 
-function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+var ControllerTomato = /*#__PURE__*/function () {
+  function ControllerTomato() {
+    _classCallCheck(this, ControllerTomato);
 
-function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
-
-function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
-
-function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
-
-var _activeTask = /*#__PURE__*/new WeakMap();
-
-var Init = /*#__PURE__*/function () {
-  function Init(_ref) {
-    var _ref$taskTime = _ref.taskTime,
-        taskTime = _ref$taskTime === void 0 ? 0.2 : _ref$taskTime,
-        _ref$pauseTime = _ref.pauseTime,
-        pauseTime = _ref$pauseTime === void 0 ? 0.1 : _ref$pauseTime,
-        _ref$pauseBigTime = _ref.pauseBigTime,
-        pauseBigTime = _ref$pauseBigTime === void 0 ? 0.3 : _ref$pauseBigTime,
-        _ref$tasksArray = _ref.tasksArray,
-        tasksArray = _ref$tasksArray === void 0 ? [] : _ref$tasksArray;
-
-    _classCallCheck(this, Init);
-
-    _classPrivateFieldInitSpec(this, _activeTask, {
-      writable: true,
-      value: null
-    });
-
-    this.taskTime = taskTime * 60; // seconds
-
-    this.pauseTime = pauseTime * 60; // seconds
-
-    this.pauseBigTime = pauseBigTime * 60; // seconds
-
-    this.tasksArray = tasksArray;
+    _defineProperty(this, "renderElem", void 0);
   }
 
-  _createClass(Init, [{
-    key: "addTask",
-    value: function addTask(taskId, taskName) {
-      this.tasksArray.push({
-        taskId: taskId,
-        taskName: taskName
-      });
-    }
-  }, {
-    key: "activateTask",
-    value: function activateTask(taskId) {
-      var item = this.tasksArray.find(function (item) {
-        return taskId === item.taskId;
-      });
-
-      _classPrivateFieldSet(this, _activeTask, item);
-    }
-  }, {
-    key: "runTask",
-    value: function runTask(taskId) {
-      var item = this.tasksArray.find(function (item) {
-        return taskId === item.taskId;
-      });
-
-      try {
-        this.runTaskTime(item);
-      } catch (err) {
-        console.error('Такой задачи не существует.');
-      }
-    }
-  }, {
-    key: "increaseTaskCount",
-    value: function increaseTaskCount(taskId) {
-      var item = this.tasksArray.find(function (item) {
-        return taskId === item.taskId;
-      });
-      item.taskCount(1); // in CreateTask class (current task count ++)
-    }
-  }, {
-    key: "runTaskTime",
-    value: function runTaskTime(item) {
+  _createClass(ControllerTomato, [{
+    key: "addMainListeners",
+    value: function addMainListeners(renderElem) {
       var _this = this;
 
-      // create timer in runned task
-      !item.taskTime ? item.taskTime = this.taskTime : false;
-      var run = setInterval(function () {
-        item.taskTime -= 1; // change timer in runned task
+      this.renderElem = renderElem;
+      /* add task button listener */
 
-        console.log("Task time: ".concat(item.taskTime));
+      this.renderElem.addTaskButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (renderElem.input.value === '') return; // check empty input
 
-        if (item.taskTime <= 0) {
-          item.taskTime = _this.taskTime;
-          item.taskCount = 1;
+        /* add task in list */
 
-          if (item.taskCount % 3 === 0) {
-            // only 3 small pauses
-            _this.runBigPause(item);
-          } else {
-            _this.runSmallPause(item);
-          }
+        var taskName = _this.renderElem.input.value;
+        /* choice importance task */
 
-          console.warn("TaskCount: ".concat(item.taskCount));
-          clearInterval(run);
+        _this.renderElem.importanceButton.classList.contains('so-so') ? _main__WEBPACK_IMPORTED_MODULE_0__.app.addTask(taskName, 'so-so') : _this.renderElem.importanceButton.classList.contains('default') ? _main__WEBPACK_IMPORTED_MODULE_0__.app.addTask(taskName, 'default') : _main__WEBPACK_IMPORTED_MODULE_0__.app.addTask(taskName, 'important');
+        renderElem.input.value = ''; // clear input after submit
+      });
+      /* run active task */
+
+      this.renderElem.buttonStart.addEventListener('click', function (e) {
+        _main__WEBPACK_IMPORTED_MODULE_0__.app.runTask();
+        _this.renderElem.buttonStart.disabled = true;
+      });
+      /* stop active task */
+
+      this.renderElem.buttonStop.addEventListener('click', function (e) {
+        var res = _main__WEBPACK_IMPORTED_MODULE_0__.app.stopTask();
+
+        if (res === true) {
+          // if "res" returned current task is ok
+          _this.renderElem.buttonStart.disabled = false;
+          _this.renderElem.buttonStop.textContent = 'Стоп';
         }
-      }, 1000);
+      });
+      /* close modal window icon*/
+
+      this.renderElem.modalOverlayCloseIcon.addEventListener('click', function () {
+        _this.renderElem.modalOverlay.style.display = 'none';
+        _this.renderElem.modalOverlayDeleteTask.dataset.id = '';
+      });
+      /* close modal window button*/
+
+      this.renderElem.modalOverlayCloseButton.addEventListener('click', function () {
+        _this.renderElem.modalOverlay.style.display = 'none';
+        _this.renderElem.modalOverlayDeleteTask.dataset.id = '';
+      });
+      /* delete task in modal window */
+
+      this.renderElem.modalOverlayDeleteTask.addEventListener('click', function (e) {
+        var item = _main__WEBPACK_IMPORTED_MODULE_0__.app.tasksArray.find(function (item) {
+          return item.importanceObject.taskId === +e.target.dataset.id;
+        });
+        item.importanceObject.buttons.taskElements.taskLi.remove();
+        _main__WEBPACK_IMPORTED_MODULE_0__.app.deleteTaskInArray(+e.target.dataset.id); // run delete func
+
+        _this.renderElem.modalOverlay.style.display = 'none';
+        _this.renderElem.modalOverlayDeleteTask.dataset.id = '';
+      });
     }
   }, {
-    key: "runSmallPause",
-    value: function runSmallPause(item) {
+    key: "addTaskListeners",
+    value: function addTaskListeners(task) {
       var _this2 = this;
 
-      // create small pause timer in runned task
-      !item.taskSmallPause ? item.taskSmallPause = this.pauseTime : false;
-      var run = setInterval(function () {
-        item.taskSmallPause -= 1; // change pause timer in runned task
+      // add listeneners every tasks (after adding task)
+      var taskButtons = task.buttons.taskElements; // path to the button
 
-        console.log("Task small Pause: ".concat(item.taskSmallPause));
+      taskButtons.taskNameBlock.addEventListener('click', function (e) {
+        _this2.renderElem.windowPanelTitle.textContent = task.taskName;
+        _this2.renderElem.tomatoNumber.textContent = "Tomato ".concat(task.taskCount);
+        _this2.renderElem.buttonStart.disabled = false;
+        _main__WEBPACK_IMPORTED_MODULE_0__.app.tasksArray.map(function (item) {
+          // reset active view
+          item.importanceObject.buttons.taskElements.taskNameBlock.classList.remove('pomodoro-tasks__task-text_active');
+        });
+        taskButtons.taskNameBlock. // set active view on one element
+        classList.add('pomodoro-tasks__task-text_active');
+        _main__WEBPACK_IMPORTED_MODULE_0__.app.activateTask(task.taskId);
+      });
+      /* show popup (delete button) */
 
-        if (item.taskSmallPause <= 0) {
-          item.taskSmallPause = _this2.pauseTime; // update default pause timer
+      taskButtons.menuTaskButton.addEventListener('click', function (e) {
+        taskButtons.deleteTaskButton.closest('.burger-popup').classList.toggle('popup-show');
+      });
+      /* close popup when click outside */
 
-          _this2.runTaskTime(item);
-
-          console.log('--------------------');
-          clearInterval(run);
+      document.body.addEventListener('click', function (e) {
+        // hide edit and delete task popup
+        if (!e.target.classList.contains('pomodoro-tasks__task-button')) {
+          taskButtons.deleteTaskButton.closest('.burger-popup').classList.remove('popup-show');
         }
-      }, 1000);
-    }
-  }, {
-    key: "runBigPause",
-    value: function runBigPause(item) {
-      var _this3 = this;
+      });
+      /* delete task button and show modal */
 
-      // create big pause timer in runned task
-      !item.taskBigPause ? item.taskBigPause = this.pauseBigTime : false;
-      var run = setInterval(function () {
-        item.taskBigPause -= 1; // change pause timer in runned task
+      taskButtons.deleteTaskButton.addEventListener('click', function () {
+        _this2.renderElem.modalOverlay.style.display = 'block';
+        /* pass id to modal */
 
-        console.info("Task BIG Pause: ".concat(item.taskBigPause));
-
-        if (item.taskBigPause <= 0) {
-          item.taskBigPause = _this3.pauseBigTime; // update default pause timer
-
-          _this3.runTaskTime(item);
-
-          console.log('--------------------');
-          clearInterval(run);
-        }
-      }, 1000);
-    }
-  }, {
-    key: "test",
-    get: function get() {
-      // ! temporality
-      return _classPrivateFieldGet(this, _activeTask);
+        _this2.renderElem.modalOverlayDeleteTask.dataset.id = task.taskId;
+      });
     }
   }]);
 
-  return Init;
+  return ControllerTomato;
 }();
+
+var controllerTomato = new ControllerTomato();
+
+/***/ }),
+
+/***/ "./src/js/main.js":
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "app": () => (/* binding */ app)
+/* harmony export */ });
+/* harmony import */ var _scss_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/index.scss */ "./src/scss/index.scss");
+/* harmony import */ var _tomato__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tomato */ "./src/js/tomato.js");
+
+
+var app = new _tomato__WEBPACK_IMPORTED_MODULE_1__.Tomato({});
+app.renderPage();
+var count = 0;
+var imp = ['default', 'important', 'so-so']; // eslint-disable-next-line max-len
+
+document.querySelector('.button-importance').addEventListener('click', function (_ref) {
+  var target = _ref.target;
+  count += 1;
+
+  if (count >= imp.length) {
+    count = 0;
+  }
+
+  for (var i = 0; i < imp.length; i++) {
+    if (count === i) {
+      target.classList.add(imp[i]);
+    } else {
+      target.classList.remove(imp[i]);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./src/js/render.js":
+/*!**************************!*\
+  !*** ./src/js/render.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RenderTomato": () => (/* binding */ RenderTomato),
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var redom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redom */ "./node_modules/redom/dist/redom.es.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+
+var LiPomodoroTask = /*#__PURE__*/function () {
+  /* for redom pomodoro instruction */
+  function LiPomodoroTask() {
+    _classCallCheck(this, LiPomodoroTask);
+
+    this.el = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('li');
+  }
+
+  _createClass(LiPomodoroTask, [{
+    key: "update",
+    value: function update(data) {
+      this.el.textContent = data;
+      this.el.classList = 'pomodoro-tasks__list-item';
+    }
+  }]);
+
+  return LiPomodoroTask;
+}();
+
+var RenderTomato = /*#__PURE__*/function () {
+  function RenderTomato() {
+    _classCallCheck(this, RenderTomato);
+  }
+
+  _createClass(RenderTomato, [{
+    key: "initRender",
+    value: function initRender() {
+      var header = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('header', (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('section.header', (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.container.header__container',
+      /* el('img.header__logo', {src: '', alt: 'Tomato image'}), */
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('h1.header__title', 'Tomato Timer'))));
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.mount)(document.body, header);
+      var main = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('main');
+      var mainSection = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('section.main');
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.mount)(main, mainSection);
+      var mainContainer = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.container.main__container');
+      /* Pomodoro window */
+
+      var windowPanelTitle = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('p.window__panel-title', '-');
+      var tomatoNumber = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('p.window__panel-task-text', '-');
+      var windowPanel = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.window__panel', windowPanelTitle, tomatoNumber);
+      var buttonTime = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('p.window__timer-text', '25:00');
+      var buttonStart = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.button.button-primary', {
+        disabled: true
+      }, 'Старт');
+      var buttonStop = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.button.button-secondary', 'Стоп');
+      var windowBody = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.window__body', buttonTime, (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.window__buttons', buttonStart, buttonStop));
+      /* form */
+
+      var input = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('input.input.task-name.input-primary', {
+        type: 'text',
+        name: 'task-name',
+        id: 'task-name',
+        placeholder: 'название задачи'
+      });
+      var importanceButton = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.button.button-importance.default', {
+        'type': 'button',
+        'aria-label': 'Указать важность'
+      });
+      var addTaskButton = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.button.button-primary.task-form__add-button', {
+        'type': 'submit'
+      }, 'Добавить');
+      var form = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('form.task-form', {
+        action: 'submit'
+      }, input, importanceButton, addTaskButton);
+      var pomodoroFormWrapper = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.pomodoro-form.window', windowPanel, windowBody, form);
+      /* instruction block */
+
+      var ul = (0,redom__WEBPACK_IMPORTED_MODULE_0__.list)('ul.pomodoro-tasks__quest-list', LiPomodoroTask);
+      ul.update(['Напишите название задачи чтобы её добавить', 'Чтобы задачу активировать, выберите её из списка', 'Запустите таймер', 'Работайте пока таймер не прозвонит', 'Сделайте короткий перерыв (5 минут)', 'Продолжайте работать, пока задача не будет выполнена.', 'Каждые 4 периода таймера делайте длинный перерыв (15-20 минут).']);
+      var pomodoroTasks = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.pomodoro-tasks', (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('p.pomodoro-tasks__header-title', 'Инструкция:'), ul, (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('ul.pomodoro-tasks__quest-tasks'), (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('p.pomodoro-tasks__deadline-timer', '1 час 30 мин'));
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.setChildren)(mainContainer, [pomodoroFormWrapper, pomodoroTasks]);
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.mount)(mainSection, mainContainer);
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.mount)(document.body, main);
+      var modalOverlayCloseIcon = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.modal-delete__close-button');
+      var modalOverlayDeleteTask = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.modal-delete__delete-button', 'Удалить');
+      var modalOverlayCloseButton = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.modal-delete__cancel-button', 'Отмена');
+      var modalOverlay = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.modal-overlay', (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.modal-delete', (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('p.modal-delete__title', 'Удалить задачу?'), modalOverlayCloseIcon, modalOverlayDeleteTask, modalOverlayCloseButton));
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.mount)(document.body, modalOverlay);
+      return {
+        windowPanelTitle: windowPanelTitle,
+        tomatoNumber: tomatoNumber,
+        input: input,
+        buttonTime: buttonTime,
+        buttonStart: buttonStart,
+        buttonStop: buttonStop,
+        importanceButton: importanceButton,
+        addTaskButton: addTaskButton,
+        modalOverlayCloseIcon: modalOverlayCloseIcon,
+        modalOverlayDeleteTask: modalOverlayDeleteTask,
+        modalOverlayCloseButton: modalOverlayCloseButton,
+        modalOverlay: modalOverlay
+      };
+    }
+  }, {
+    key: "renderTask",
+    value: function renderTask(importanceObject) {
+      var tasksWrapper = document.querySelector('.pomodoro-tasks__quest-tasks');
+      var countNumberBlock = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('span.count-number', "".concat(importanceObject.taskCount));
+      var taskNameBlock = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.pomodoro-tasks__task-text.', "".concat(importanceObject.taskName));
+      var menuTaskButton = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.pomodoro-tasks__task-button');
+      /* const editTaskButton =
+        el('button.popup-button.burger-popup__edit-button', 'Редактировать'); */
+
+      var deleteTaskButton = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('button.popup-button.burger-popup__delete-button', 'Удалить');
+      var taskLi = (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)("li.pomodoro-tasks__list-task.".concat(importanceObject.taskImportance), countNumberBlock, taskNameBlock, menuTaskButton, (0,redom__WEBPACK_IMPORTED_MODULE_0__.el)('.burger-popup',
+      /* editTaskButton, */
+      deleteTaskButton));
+      (0,redom__WEBPACK_IMPORTED_MODULE_0__.mount)(tasksWrapper, taskLi);
+      return {
+        countNumberBlock: countNumberBlock,
+        taskNameBlock: taskNameBlock,
+        menuTaskButton: menuTaskButton,
+        deleteTaskButton: deleteTaskButton,
+        taskLi: taskLi
+      };
+    }
+  }]);
+
+  return RenderTomato;
+}();
+var render = new RenderTomato();
 
 /***/ }),
 
@@ -232,13 +398,34 @@ var Init = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CreateTask": () => (/* binding */ CreateTask)
+/* harmony export */   "HighTask": () => (/* binding */ HighTask),
+/* harmony export */   "LowTask": () => (/* binding */ LowTask),
+/* harmony export */   "NormalTask": () => (/* binding */ NormalTask),
+/* harmony export */   "Task": () => (/* binding */ Task)
 /* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
 
@@ -260,11 +447,12 @@ var _taskName = /*#__PURE__*/new WeakMap();
 
 var _taskId = /*#__PURE__*/new WeakMap();
 
-var CreateTask = /*#__PURE__*/function () {
-  function CreateTask(taskName) {
-    var taskCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+var Task = /*#__PURE__*/function () {
+  /* isActive = false; */
+  function Task(taskName) {
+    var taskCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    _classCallCheck(this, CreateTask);
+    _classCallCheck(this, Task);
 
     _classPrivateFieldInitSpec(this, _taskCount, {
       writable: true,
@@ -281,14 +469,16 @@ var CreateTask = /*#__PURE__*/function () {
       value: void 0
     });
 
-    _classPrivateFieldSet(this, _taskId, Math.floor(Math.random() * 1000000000));
+    _defineProperty(this, "buttons", void 0);
+
+    _classPrivateFieldSet(this, _taskId, Math.floor(Math.random() * 1e9));
 
     _classPrivateFieldSet(this, _taskName, taskName);
 
     _classPrivateFieldSet(this, _taskCount, taskCount);
   }
 
-  _createClass(CreateTask, [{
+  _createClass(Task, [{
     key: "changeUpCount",
     value: function changeUpCount() {
       var _this$taskCount, _this$taskCount2;
@@ -322,7 +512,459 @@ var CreateTask = /*#__PURE__*/function () {
     }
   }]);
 
-  return CreateTask;
+  return Task;
+}();
+
+var _importance = /*#__PURE__*/new WeakMap();
+
+var HighTask = /*#__PURE__*/function (_Task) {
+  _inherits(HighTask, _Task);
+
+  var _super = _createSuper(HighTask);
+
+  function HighTask() {
+    var _this;
+
+    _classCallCheck(this, HighTask);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _classPrivateFieldInitSpec(_assertThisInitialized(_this), _importance, {
+      writable: true,
+      value: 'important'
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "isActive", false);
+
+    return _this;
+  }
+
+  _createClass(HighTask, [{
+    key: "taskImportance",
+    get: function get() {
+      return _classPrivateFieldGet(this, _importance);
+    }
+  }]);
+
+  return HighTask;
+}(Task);
+
+var _importance2 = /*#__PURE__*/new WeakMap();
+
+var NormalTask = /*#__PURE__*/function (_Task2) {
+  _inherits(NormalTask, _Task2);
+
+  var _super2 = _createSuper(NormalTask);
+
+  function NormalTask() {
+    var _this2;
+
+    _classCallCheck(this, NormalTask);
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    _this2 = _super2.call.apply(_super2, [this].concat(args));
+
+    _classPrivateFieldInitSpec(_assertThisInitialized(_this2), _importance2, {
+      writable: true,
+      value: 'default'
+    });
+
+    _defineProperty(_assertThisInitialized(_this2), "isActive", false);
+
+    return _this2;
+  }
+
+  _createClass(NormalTask, [{
+    key: "taskImportance",
+    get: function get() {
+      return _classPrivateFieldGet(this, _importance2);
+    }
+  }]);
+
+  return NormalTask;
+}(Task);
+
+var _importance3 = /*#__PURE__*/new WeakMap();
+
+var LowTask = /*#__PURE__*/function (_Task3) {
+  _inherits(LowTask, _Task3);
+
+  var _super3 = _createSuper(LowTask);
+
+  function LowTask() {
+    var _this3;
+
+    _classCallCheck(this, LowTask);
+
+    for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      args[_key3] = arguments[_key3];
+    }
+
+    _this3 = _super3.call.apply(_super3, [this].concat(args));
+
+    _classPrivateFieldInitSpec(_assertThisInitialized(_this3), _importance3, {
+      writable: true,
+      value: 'so-so'
+    });
+
+    _defineProperty(_assertThisInitialized(_this3), "isActive", false);
+
+    return _this3;
+  }
+
+  _createClass(LowTask, [{
+    key: "taskImportance",
+    get: function get() {
+      return _classPrivateFieldGet(this, _importance3);
+    }
+  }]);
+
+  return LowTask;
+}(Task);
+
+/***/ }),
+
+/***/ "./src/js/tomato.js":
+/*!**************************!*\
+  !*** ./src/js/tomato.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Tomato": () => (/* binding */ Tomato)
+/* harmony export */ });
+/* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tasks */ "./src/js/tasks.js");
+/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./render */ "./src/js/render.js");
+/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controller */ "./src/js/controller.js");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
+
+function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
+
+function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
+
+function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+
+function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
+
+function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
+
+function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
+
+
+
+
+
+var _activeTask = /*#__PURE__*/new WeakMap();
+
+var Tomato = /*#__PURE__*/function () {
+  function Tomato(_ref) {
+    var _ref$taskTime = _ref.taskTime,
+        taskTime = _ref$taskTime === void 0 ? 0.3 : _ref$taskTime,
+        _ref$pauseTime = _ref.pauseTime,
+        pauseTime = _ref$pauseTime === void 0 ? 0.1 : _ref$pauseTime,
+        _ref$pauseBigTime = _ref.pauseBigTime,
+        pauseBigTime = _ref$pauseBigTime === void 0 ? 0.3 : _ref$pauseBigTime,
+        _ref$tasksArray = _ref.tasksArray,
+        tasksArray = _ref$tasksArray === void 0 ? [] : _ref$tasksArray;
+
+    _classCallCheck(this, Tomato);
+
+    _classPrivateFieldInitSpec(this, _activeTask, {
+      writable: true,
+      value: null
+    });
+
+    _defineProperty(this, "renderElem", null);
+
+    _defineProperty(this, "runMainTime", null);
+
+    _defineProperty(this, "runSmallPauseTime", null);
+
+    _defineProperty(this, "runBigPauseTime", null);
+
+    if (Tomato.instance) {
+      return Tomato.instance;
+    }
+
+    this.taskTime = taskTime * 60; // seconds
+
+    this.pauseTime = pauseTime * 60; // seconds
+
+    this.pauseBigTime = pauseBigTime * 60; // seconds
+
+    this.tasksArray = tasksArray;
+    Tomato.instance = this;
+  }
+
+  _createClass(Tomato, [{
+    key: "normalizeTimer",
+    value: function normalizeTimer(seconds) {
+      // for display zeros. Example 01:08
+      return "".concat(seconds / 60 < 10 ? '0' : '').concat(Math.floor(seconds / 60), ":").concat(seconds % 60 < 10 ? 0 : '').concat(Math.floor(seconds % 60));
+    }
+  }, {
+    key: "addTask",
+    value: function addTask(taskName) {
+      var importance = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'default';
+      var ImportanceObject = importance === 'so-so' ? _tasks__WEBPACK_IMPORTED_MODULE_0__.LowTask : importance === 'default' ? _tasks__WEBPACK_IMPORTED_MODULE_0__.NormalTask : _tasks__WEBPACK_IMPORTED_MODULE_0__.HighTask;
+      var importanceObject = new ImportanceObject(taskName);
+      /* render task in layout */
+
+      var taskElements = _render__WEBPACK_IMPORTED_MODULE_1__.render.renderTask(importanceObject); // writing buttons to the task object
+
+      importanceObject.buttons = {
+        taskElements: taskElements
+      }; // push task in tasks array
+
+      this.tasksArray.push({
+        importanceObject: importanceObject
+      });
+      /* for task listeners */
+
+      _controller__WEBPACK_IMPORTED_MODULE_2__.controllerTomato.addTaskListeners(importanceObject);
+      return importanceObject;
+    }
+  }, {
+    key: "activateTask",
+    value: function activateTask(taskId) {
+      var _iterator = _createForOfIteratorHelper(this.tasksArray),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _item = _step.value;
+          _item.importanceObject.isActive = false; // false all tasks
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var item = this.tasksArray.find(function (item) {
+        return taskId === item.importanceObject.taskId;
+      });
+      item.importanceObject.isActive = true; // active current task
+
+      _classPrivateFieldSet(this, _activeTask, item); // push current item in tomato activeTask
+
+
+      if (item.importanceObject.taskTime) {
+        // show task time in main window
+        this.renderElem.buttonTime.textContent = this.normalizeTimer(item.importanceObject.taskTime);
+      } else {
+        this.renderElem.buttonTime.textContent = this.normalizeTimer(this.taskTime); // default task time
+      }
+    }
+  }, {
+    key: "runTask",
+    value: function runTask() {
+      if (_classPrivateFieldGet(this, _activeTask)) {
+        // first initialization check
+        var activeTask = _classPrivateFieldGet(this, _activeTask); // get task from tomato varialbe
+
+
+        var item = this.tasksArray.find(function (item) {
+          return activeTask.importanceObject.taskId === item.importanceObject.taskId;
+        });
+
+        try {
+          this.runTaskTime(item.importanceObject); // run counter for current task
+        } catch (err) {
+          console.error('Такой задачи не существует.');
+        }
+      }
+    }
+  }, {
+    key: "stopTask",
+    value: function stopTask() {
+      if (this.getActiveTask()) {
+        // first initialization check
+        var activeTask = this.getActiveTask();
+        var item = this.tasksArray.find(function (item) {
+          return activeTask.importanceObject.taskId === item.importanceObject.taskId;
+        });
+        item.importanceObject.taskSmallPause = null; // clear small pause
+
+        item.importanceObject.taskBigPause = null; // clear big pause
+
+        /* item.importanceObject.taskTime = null; */
+        // clear taskTime
+
+        clearInterval(this.runMainTime);
+        clearInterval(this.runSmallPauseTime);
+        clearInterval(this.runBigPauseTime);
+        this.renderElem.buttonTime.textContent = this.normalizeTimer(item.importanceObject.taskTime);
+        /* when active pause time - change color to black */
+
+        document.querySelector('.window__timer-text').style.color = '#333333';
+        return true;
+      }
+    }
+  }, {
+    key: "increaseTaskCount",
+    value: function increaseTaskCount(taskId) {
+      var item = this.tasksArray.find(function (item) {
+        return taskId === item.taskId;
+      });
+      item.taskCount(1); // in CreateTask class (current task count ++)
+    } // change tomato count for main window
+
+  }, {
+    key: "changeTomatoCountCurrentTask",
+    value: function changeTomatoCountCurrentTask(tomatoCounter) {
+      if (_classPrivateFieldGet(this, _activeTask) === null) {
+        return false;
+      }
+
+      var activeTask = _classPrivateFieldGet(this, _activeTask);
+
+      if (activeTask.importanceObject.taskCount % 4 === 0) {
+        tomatoCounter.textContent = "Tomato 4"; // change in main window
+
+        activeTask.importanceObject.buttons.taskElements.taskLi.querySelector('span').textContent = '4'; // change in tasks list
+      } else {
+        tomatoCounter.textContent = "Tomato ".concat(activeTask.importanceObject.taskCount % 4);
+        activeTask.importanceObject.buttons.taskElements.taskLi.querySelector('span').textContent = activeTask.importanceObject.taskCount % 4; // change in tasks list
+      }
+    }
+  }, {
+    key: "runTaskTime",
+    value: function runTaskTime(item) {
+      var _this = this;
+
+      // create timer in runned task
+      !item.taskTime ? item.taskTime = this.taskTime : false; //  render tomato task count in main window
+
+      this.changeTomatoCountCurrentTask(this.renderElem.tomatoNumber);
+      document.querySelector('.window__timer-text').style.color = '#333333';
+      this.renderElem.buttonStop.textContent = 'Пауза'; // change text after start
+
+      this.runMainTime = setInterval(function () {
+        item.taskTime -= 1; // change timer in runned task
+
+        /* task timer visual work */
+
+        _this.renderElem.buttonTime.textContent = _this.normalizeTimer(item.taskTime);
+
+        if (item.taskTime <= 0) {
+          item.taskTime = _this.taskTime; // save task time in current task
+
+          item.taskCount = 1;
+
+          if (item.taskCount % 4 - 1 === 0) {
+            // only 4 small pauses
+            _this.runBigPause(item);
+          } else {
+            _this.runSmallPause(item);
+          }
+
+          clearInterval(_this.runMainTime);
+        }
+      }, 1000);
+    }
+  }, {
+    key: "runSmallPause",
+    value: function runSmallPause(item) {
+      var _this2 = this;
+
+      // create small pause timer in runned task
+      !item.taskSmallPause ? item.taskSmallPause = this.pauseTime : false; // change color timer when start timebreak
+
+      document.querySelector('.window__timer-text').style.color = '#00a13d';
+      this.renderElem.buttonStop.textContent = 'Закончить отдых';
+      this.runSmallPauseTime = setInterval(function () {
+        item.taskSmallPause -= 1; // change pause timer in runned task
+
+        /* task timer visual work */
+
+        _this2.renderElem.buttonTime.textContent = _this2.normalizeTimer(item.taskSmallPause);
+
+        if (item.taskSmallPause <= 0) {
+          item.taskSmallPause = _this2.pauseTime; // update default pause timer
+
+          _this2.runTaskTime(item);
+
+          clearInterval(_this2.runSmallPauseTime);
+        }
+      }, 1000);
+    }
+  }, {
+    key: "runBigPause",
+    value: function runBigPause(item) {
+      var _this3 = this;
+
+      // create big pause timer in runned task
+      !item.taskBigPause ? item.taskBigPause = this.pauseBigTime : false; // change color timer when start timebreak
+
+      document.querySelector('.window__timer-text').style.color = '#00a13d';
+      this.renderElem.buttonStop.textContent = 'Закончить отдых';
+      this.runBigPauseTime = setInterval(function () {
+        item.taskBigPause -= 1; // change pause timer in runned task
+
+        /* task timer visual work */
+
+        _this3.renderElem.buttonTime.textContent = _this3.normalizeTimer(item.taskBigPause);
+
+        if (item.taskBigPause <= 0) {
+          item.taskBigPause = _this3.pauseBigTime; // update default pause timer
+
+          _this3.runTaskTime(item);
+
+          clearInterval(_this3.runBigPauseTime);
+        }
+      }, 1000);
+    }
+  }, {
+    key: "renderPage",
+    value: function renderPage() {
+      // render page first init
+      this.renderElem = _render__WEBPACK_IMPORTED_MODULE_1__.render.initRender();
+      _controller__WEBPACK_IMPORTED_MODULE_2__.controllerTomato.addMainListeners(this.renderElem);
+    }
+  }, {
+    key: "deleteTaskInArray",
+    value: function deleteTaskInArray(taskId) {
+      console.log(taskId);
+
+      for (var i = 0; i < this.tasksArray.length; i++) {
+        if (this.tasksArray[i].importanceObject.taskId === taskId) {
+          this.tasksArray.splice(i, 1);
+          return;
+        }
+      }
+    }
+  }, {
+    key: "getActiveTask",
+    value: function getActiveTask() {
+      return _classPrivateFieldGet(this, _activeTask);
+    }
+  }]);
+
+  return Tomato;
 }();
 
 /***/ }),
@@ -9396,6 +10038,777 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/redom/dist/redom.es.js":
+/*!*********************************************!*\
+  !*** ./node_modules/redom/dist/redom.es.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "List": () => (/* binding */ List),
+/* harmony export */   "ListPool": () => (/* binding */ ListPool),
+/* harmony export */   "Place": () => (/* binding */ Place),
+/* harmony export */   "Router": () => (/* binding */ Router),
+/* harmony export */   "el": () => (/* binding */ el),
+/* harmony export */   "h": () => (/* binding */ h),
+/* harmony export */   "html": () => (/* binding */ html),
+/* harmony export */   "list": () => (/* binding */ list),
+/* harmony export */   "listPool": () => (/* binding */ listPool),
+/* harmony export */   "mount": () => (/* binding */ mount),
+/* harmony export */   "place": () => (/* binding */ place),
+/* harmony export */   "router": () => (/* binding */ router),
+/* harmony export */   "s": () => (/* binding */ s),
+/* harmony export */   "setAttr": () => (/* binding */ setAttr),
+/* harmony export */   "setChildren": () => (/* binding */ setChildren),
+/* harmony export */   "setData": () => (/* binding */ setData),
+/* harmony export */   "setStyle": () => (/* binding */ setStyle),
+/* harmony export */   "setXlink": () => (/* binding */ setXlink),
+/* harmony export */   "svg": () => (/* binding */ svg),
+/* harmony export */   "text": () => (/* binding */ text),
+/* harmony export */   "unmount": () => (/* binding */ unmount)
+/* harmony export */ });
+function createElement (query, ns) {
+  var ref = parse(query);
+  var tag = ref.tag;
+  var id = ref.id;
+  var className = ref.className;
+  var element = ns ? document.createElementNS(ns, tag) : document.createElement(tag);
+
+  if (id) {
+    element.id = id;
+  }
+
+  if (className) {
+    if (ns) {
+      element.setAttribute('class', className);
+    } else {
+      element.className = className;
+    }
+  }
+
+  return element;
+}
+
+function parse (query) {
+  var chunks = query.split(/([.#])/);
+  var className = '';
+  var id = '';
+
+  for (var i = 1; i < chunks.length; i += 2) {
+    switch (chunks[i]) {
+      case '.':
+        className += " " + (chunks[i + 1]);
+        break;
+
+      case '#':
+        id = chunks[i + 1];
+    }
+  }
+
+  return {
+    className: className.trim(),
+    tag: chunks[0] || 'div',
+    id: id
+  };
+}
+
+function unmount (parent, child) {
+  var parentEl = getEl(parent);
+  var childEl = getEl(child);
+
+  if (child === childEl && childEl.__redom_view) {
+    // try to look up the view if not provided
+    child = childEl.__redom_view;
+  }
+
+  if (childEl.parentNode) {
+    doUnmount(child, childEl, parentEl);
+
+    parentEl.removeChild(childEl);
+  }
+
+  return child;
+}
+
+function doUnmount (child, childEl, parentEl) {
+  var hooks = childEl.__redom_lifecycle;
+
+  if (hooksAreEmpty(hooks)) {
+    childEl.__redom_lifecycle = {};
+    return;
+  }
+
+  var traverse = parentEl;
+
+  if (childEl.__redom_mounted) {
+    trigger(childEl, 'onunmount');
+  }
+
+  while (traverse) {
+    var parentHooks = traverse.__redom_lifecycle || {};
+
+    for (var hook in hooks) {
+      if (parentHooks[hook]) {
+        parentHooks[hook] -= hooks[hook];
+      }
+    }
+
+    if (hooksAreEmpty(parentHooks)) {
+      traverse.__redom_lifecycle = null;
+    }
+
+    traverse = traverse.parentNode;
+  }
+}
+
+function hooksAreEmpty (hooks) {
+  if (hooks == null) {
+    return true;
+  }
+  for (var key in hooks) {
+    if (hooks[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/* global Node, ShadowRoot */
+
+var hookNames = ['onmount', 'onremount', 'onunmount'];
+var shadowRootAvailable = typeof window !== 'undefined' && 'ShadowRoot' in window;
+
+function mount (parent, child, before, replace) {
+  var parentEl = getEl(parent);
+  var childEl = getEl(child);
+
+  if (child === childEl && childEl.__redom_view) {
+    // try to look up the view if not provided
+    child = childEl.__redom_view;
+  }
+
+  if (child !== childEl) {
+    childEl.__redom_view = child;
+  }
+
+  var wasMounted = childEl.__redom_mounted;
+  var oldParent = childEl.parentNode;
+
+  if (wasMounted && (oldParent !== parentEl)) {
+    doUnmount(child, childEl, oldParent);
+  }
+
+  if (before != null) {
+    if (replace) {
+      parentEl.replaceChild(childEl, getEl(before));
+    } else {
+      parentEl.insertBefore(childEl, getEl(before));
+    }
+  } else {
+    parentEl.appendChild(childEl);
+  }
+
+  doMount(child, childEl, parentEl, oldParent);
+
+  return child;
+}
+
+function trigger (el, eventName) {
+  if (eventName === 'onmount' || eventName === 'onremount') {
+    el.__redom_mounted = true;
+  } else if (eventName === 'onunmount') {
+    el.__redom_mounted = false;
+  }
+
+  var hooks = el.__redom_lifecycle;
+
+  if (!hooks) {
+    return;
+  }
+
+  var view = el.__redom_view;
+  var hookCount = 0;
+
+  view && view[eventName] && view[eventName]();
+
+  for (var hook in hooks) {
+    if (hook) {
+      hookCount++;
+    }
+  }
+
+  if (hookCount) {
+    var traverse = el.firstChild;
+
+    while (traverse) {
+      var next = traverse.nextSibling;
+
+      trigger(traverse, eventName);
+
+      traverse = next;
+    }
+  }
+}
+
+function doMount (child, childEl, parentEl, oldParent) {
+  var hooks = childEl.__redom_lifecycle || (childEl.__redom_lifecycle = {});
+  var remount = (parentEl === oldParent);
+  var hooksFound = false;
+
+  for (var i = 0, list = hookNames; i < list.length; i += 1) {
+    var hookName = list[i];
+
+    if (!remount) { // if already mounted, skip this phase
+      if (child !== childEl) { // only Views can have lifecycle events
+        if (hookName in child) {
+          hooks[hookName] = (hooks[hookName] || 0) + 1;
+        }
+      }
+    }
+    if (hooks[hookName]) {
+      hooksFound = true;
+    }
+  }
+
+  if (!hooksFound) {
+    childEl.__redom_lifecycle = {};
+    return;
+  }
+
+  var traverse = parentEl;
+  var triggered = false;
+
+  if (remount || (traverse && traverse.__redom_mounted)) {
+    trigger(childEl, remount ? 'onremount' : 'onmount');
+    triggered = true;
+  }
+
+  while (traverse) {
+    var parent = traverse.parentNode;
+    var parentHooks = traverse.__redom_lifecycle || (traverse.__redom_lifecycle = {});
+
+    for (var hook in hooks) {
+      parentHooks[hook] = (parentHooks[hook] || 0) + hooks[hook];
+    }
+
+    if (triggered) {
+      break;
+    } else {
+      if (traverse.nodeType === Node.DOCUMENT_NODE ||
+        (shadowRootAvailable && (traverse instanceof ShadowRoot)) ||
+        (parent && parent.__redom_mounted)
+      ) {
+        trigger(traverse, remount ? 'onremount' : 'onmount');
+        triggered = true;
+      }
+      traverse = parent;
+    }
+  }
+}
+
+function setStyle (view, arg1, arg2) {
+  var el = getEl(view);
+
+  if (typeof arg1 === 'object') {
+    for (var key in arg1) {
+      setStyleValue(el, key, arg1[key]);
+    }
+  } else {
+    setStyleValue(el, arg1, arg2);
+  }
+}
+
+function setStyleValue (el, key, value) {
+  el.style[key] = value == null ? '' : value;
+}
+
+/* global SVGElement */
+
+var xlinkns = 'http://www.w3.org/1999/xlink';
+
+function setAttr (view, arg1, arg2) {
+  setAttrInternal(view, arg1, arg2);
+}
+
+function setAttrInternal (view, arg1, arg2, initial) {
+  var el = getEl(view);
+
+  var isObj = typeof arg1 === 'object';
+
+  if (isObj) {
+    for (var key in arg1) {
+      setAttrInternal(el, key, arg1[key], initial);
+    }
+  } else {
+    var isSVG = el instanceof SVGElement;
+    var isFunc = typeof arg2 === 'function';
+
+    if (arg1 === 'style' && typeof arg2 === 'object') {
+      setStyle(el, arg2);
+    } else if (isSVG && isFunc) {
+      el[arg1] = arg2;
+    } else if (arg1 === 'dataset') {
+      setData(el, arg2);
+    } else if (!isSVG && (arg1 in el || isFunc) && (arg1 !== 'list')) {
+      el[arg1] = arg2;
+    } else {
+      if (isSVG && (arg1 === 'xlink')) {
+        setXlink(el, arg2);
+        return;
+      }
+      if (initial && arg1 === 'class') {
+        arg2 = el.className + ' ' + arg2;
+      }
+      if (arg2 == null) {
+        el.removeAttribute(arg1);
+      } else {
+        el.setAttribute(arg1, arg2);
+      }
+    }
+  }
+}
+
+function setXlink (el, arg1, arg2) {
+  if (typeof arg1 === 'object') {
+    for (var key in arg1) {
+      setXlink(el, key, arg1[key]);
+    }
+  } else {
+    if (arg2 != null) {
+      el.setAttributeNS(xlinkns, arg1, arg2);
+    } else {
+      el.removeAttributeNS(xlinkns, arg1, arg2);
+    }
+  }
+}
+
+function setData (el, arg1, arg2) {
+  if (typeof arg1 === 'object') {
+    for (var key in arg1) {
+      setData(el, key, arg1[key]);
+    }
+  } else {
+    if (arg2 != null) {
+      el.dataset[arg1] = arg2;
+    } else {
+      delete el.dataset[arg1];
+    }
+  }
+}
+
+function text (str) {
+  return document.createTextNode((str != null) ? str : '');
+}
+
+function parseArgumentsInternal (element, args, initial) {
+  for (var i = 0, list = args; i < list.length; i += 1) {
+    var arg = list[i];
+
+    if (arg !== 0 && !arg) {
+      continue;
+    }
+
+    var type = typeof arg;
+
+    if (type === 'function') {
+      arg(element);
+    } else if (type === 'string' || type === 'number') {
+      element.appendChild(text(arg));
+    } else if (isNode(getEl(arg))) {
+      mount(element, arg);
+    } else if (arg.length) {
+      parseArgumentsInternal(element, arg, initial);
+    } else if (type === 'object') {
+      setAttrInternal(element, arg, null, initial);
+    }
+  }
+}
+
+function ensureEl (parent) {
+  return typeof parent === 'string' ? html(parent) : getEl(parent);
+}
+
+function getEl (parent) {
+  return (parent.nodeType && parent) || (!parent.el && parent) || getEl(parent.el);
+}
+
+function isNode (arg) {
+  return arg && arg.nodeType;
+}
+
+var htmlCache = {};
+
+function html (query) {
+  var args = [], len = arguments.length - 1;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+  var element;
+
+  var type = typeof query;
+
+  if (type === 'string') {
+    element = memoizeHTML(query).cloneNode(false);
+  } else if (isNode(query)) {
+    element = query.cloneNode(false);
+  } else if (type === 'function') {
+    var Query = query;
+    element = new (Function.prototype.bind.apply( Query, [ null ].concat( args) ));
+  } else {
+    throw new Error('At least one argument required');
+  }
+
+  parseArgumentsInternal(getEl(element), args, true);
+
+  return element;
+}
+
+var el = html;
+var h = html;
+
+html.extend = function extendHtml (query) {
+  var args = [], len = arguments.length - 1;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+  var clone = memoizeHTML(query);
+
+  return html.bind.apply(html, [ this, clone ].concat( args ));
+};
+
+function memoizeHTML (query) {
+  return htmlCache[query] || (htmlCache[query] = createElement(query));
+}
+
+function setChildren (parent) {
+  var children = [], len = arguments.length - 1;
+  while ( len-- > 0 ) children[ len ] = arguments[ len + 1 ];
+
+  var parentEl = getEl(parent);
+  var current = traverse(parent, children, parentEl.firstChild);
+
+  while (current) {
+    var next = current.nextSibling;
+
+    unmount(parent, current);
+
+    current = next;
+  }
+}
+
+function traverse (parent, children, _current) {
+  var current = _current;
+
+  var childEls = Array(children.length);
+
+  for (var i = 0; i < children.length; i++) {
+    childEls[i] = children[i] && getEl(children[i]);
+  }
+
+  for (var i$1 = 0; i$1 < children.length; i$1++) {
+    var child = children[i$1];
+
+    if (!child) {
+      continue;
+    }
+
+    var childEl = childEls[i$1];
+
+    if (childEl === current) {
+      current = current.nextSibling;
+      continue;
+    }
+
+    if (isNode(childEl)) {
+      var next = current && current.nextSibling;
+      var exists = child.__redom_index != null;
+      var replace = exists && next === childEls[i$1 + 1];
+
+      mount(parent, child, current, replace);
+
+      if (replace) {
+        current = next;
+      }
+
+      continue;
+    }
+
+    if (child.length != null) {
+      current = traverse(parent, child, current);
+    }
+  }
+
+  return current;
+}
+
+function listPool (View, key, initData) {
+  return new ListPool(View, key, initData);
+}
+
+var ListPool = function ListPool (View, key, initData) {
+  this.View = View;
+  this.initData = initData;
+  this.oldLookup = {};
+  this.lookup = {};
+  this.oldViews = [];
+  this.views = [];
+
+  if (key != null) {
+    this.key = typeof key === 'function' ? key : propKey(key);
+  }
+};
+
+ListPool.prototype.update = function update (data, context) {
+  var ref = this;
+    var View = ref.View;
+    var key = ref.key;
+    var initData = ref.initData;
+  var keySet = key != null;
+
+  var oldLookup = this.lookup;
+  var newLookup = {};
+
+  var newViews = Array(data.length);
+  var oldViews = this.views;
+
+  for (var i = 0; i < data.length; i++) {
+    var item = data[i];
+    var view = (void 0);
+
+    if (keySet) {
+      var id = key(item);
+
+      view = oldLookup[id] || new View(initData, item, i, data);
+      newLookup[id] = view;
+      view.__redom_id = id;
+    } else {
+      view = oldViews[i] || new View(initData, item, i, data);
+    }
+    view.update && view.update(item, i, data, context);
+
+    var el = getEl(view.el);
+
+    el.__redom_view = view;
+    newViews[i] = view;
+  }
+
+  this.oldViews = oldViews;
+  this.views = newViews;
+
+  this.oldLookup = oldLookup;
+  this.lookup = newLookup;
+};
+
+function propKey (key) {
+  return function (item) {
+    return item[key];
+  };
+}
+
+function list (parent, View, key, initData) {
+  return new List(parent, View, key, initData);
+}
+
+var List = function List (parent, View, key, initData) {
+  this.View = View;
+  this.initData = initData;
+  this.views = [];
+  this.pool = new ListPool(View, key, initData);
+  this.el = ensureEl(parent);
+  this.keySet = key != null;
+};
+
+List.prototype.update = function update (data, context) {
+    if ( data === void 0 ) data = [];
+
+  var ref = this;
+    var keySet = ref.keySet;
+  var oldViews = this.views;
+
+  this.pool.update(data, context);
+
+  var ref$1 = this.pool;
+    var views = ref$1.views;
+    var lookup = ref$1.lookup;
+
+  if (keySet) {
+    for (var i = 0; i < oldViews.length; i++) {
+      var oldView = oldViews[i];
+      var id = oldView.__redom_id;
+
+      if (lookup[id] == null) {
+        oldView.__redom_index = null;
+        unmount(this, oldView);
+      }
+    }
+  }
+
+  for (var i$1 = 0; i$1 < views.length; i$1++) {
+    var view = views[i$1];
+
+    view.__redom_index = i$1;
+  }
+
+  setChildren(this, views);
+
+  if (keySet) {
+    this.lookup = lookup;
+  }
+  this.views = views;
+};
+
+List.extend = function extendList (parent, View, key, initData) {
+  return List.bind(List, parent, View, key, initData);
+};
+
+list.extend = List.extend;
+
+/* global Node */
+
+function place (View, initData) {
+  return new Place(View, initData);
+}
+
+var Place = function Place (View, initData) {
+  this.el = text('');
+  this.visible = false;
+  this.view = null;
+  this._placeholder = this.el;
+
+  if (View instanceof Node) {
+    this._el = View;
+  } else if (View.el instanceof Node) {
+    this._el = View;
+    this.view = View;
+  } else {
+    this._View = View;
+  }
+
+  this._initData = initData;
+};
+
+Place.prototype.update = function update (visible, data) {
+  var placeholder = this._placeholder;
+  var parentNode = this.el.parentNode;
+
+  if (visible) {
+    if (!this.visible) {
+      if (this._el) {
+        mount(parentNode, this._el, placeholder);
+        unmount(parentNode, placeholder);
+
+        this.el = getEl(this._el);
+        this.visible = visible;
+      } else {
+        var View = this._View;
+        var view = new View(this._initData);
+
+        this.el = getEl(view);
+        this.view = view;
+
+        mount(parentNode, view, placeholder);
+        unmount(parentNode, placeholder);
+      }
+    }
+    this.view && this.view.update && this.view.update(data);
+  } else {
+    if (this.visible) {
+      if (this._el) {
+        mount(parentNode, placeholder, this._el);
+        unmount(parentNode, this._el);
+
+        this.el = placeholder;
+        this.visible = visible;
+
+        return;
+      }
+      mount(parentNode, placeholder, this.view);
+      unmount(parentNode, this.view);
+
+      this.el = placeholder;
+      this.view = null;
+    }
+  }
+  this.visible = visible;
+};
+
+/* global Node */
+
+function router (parent, Views, initData) {
+  return new Router(parent, Views, initData);
+}
+
+var Router = function Router (parent, Views, initData) {
+  this.el = ensureEl(parent);
+  this.Views = Views;
+  this.initData = initData;
+};
+
+Router.prototype.update = function update (route, data) {
+  if (route !== this.route) {
+    var Views = this.Views;
+    var View = Views[route];
+
+    this.route = route;
+
+    if (View && (View instanceof Node || View.el instanceof Node)) {
+      this.view = View;
+    } else {
+      this.view = View && new View(this.initData, data);
+    }
+
+    setChildren(this.el, [this.view]);
+  }
+  this.view && this.view.update && this.view.update(data, route);
+};
+
+var ns = 'http://www.w3.org/2000/svg';
+
+var svgCache = {};
+
+function svg (query) {
+  var args = [], len = arguments.length - 1;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+  var element;
+
+  var type = typeof query;
+
+  if (type === 'string') {
+    element = memoizeSVG(query).cloneNode(false);
+  } else if (isNode(query)) {
+    element = query.cloneNode(false);
+  } else if (type === 'function') {
+    var Query = query;
+    element = new (Function.prototype.bind.apply( Query, [ null ].concat( args) ));
+  } else {
+    throw new Error('At least one argument required');
+  }
+
+  parseArgumentsInternal(getEl(element), args, true);
+
+  return element;
+}
+
+var s = svg;
+
+svg.extend = function extendSvg (query) {
+  var clone = memoizeSVG(query);
+
+  return svg.bind(this, clone);
+};
+
+svg.ns = ns;
+
+function memoizeSVG (query) {
+  return svgCache[query] || (svgCache[query] = createElement(query, ns));
+}
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/regenerator-runtime/runtime.js":
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
@@ -10216,88 +11629,13 @@ try {
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-/*!***************************************************!*\
-  !*** ./node_modules/@babel/polyfill/lib/index.js ***!
-  \***************************************************/
-
-
-__webpack_require__(/*! ./noConflict */ "./node_modules/@babel/polyfill/lib/noConflict.js");
-
-var _global = _interopRequireDefault(__webpack_require__(/*! core-js/library/fn/global */ "./node_modules/core-js/library/fn/global.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-if (_global["default"]._babelPolyfill && typeof console !== "undefined" && console.warn) {
-  console.warn("@babel/polyfill is loaded more than once on this page. This is probably not desirable/intended " + "and may have consequences if different versions of the polyfills are applied sequentially. " + "If you do need to load the polyfill more than once, use @babel/polyfill/noConflict " + "instead to bypass the warning.");
-}
-
-_global["default"]._babelPolyfill = true;
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _scss_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../scss/index.scss */ "./src/scss/index.scss");
-/* harmony import */ var _init__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./init */ "./src/js/init.js");
-/* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tasks */ "./src/js/tasks.js");
-
-
-
-var count = 0;
-var imp = ['default', 'important', 'so-so']; // eslint-disable-next-line max-len
-
-document.querySelector('.button-importance').addEventListener('click', function (_ref) {
-  var target = _ref.target;
-  count += 1;
-
-  if (count >= imp.length) {
-    count = 0;
-  }
-
-  for (var i = 0; i < imp.length; i++) {
-    if (count === i) {
-      target.classList.add(imp[i]);
-    } else {
-      target.classList.remove(imp[i]);
-    }
-  }
-});
-var newTask = new _tasks__WEBPACK_IMPORTED_MODULE_2__.CreateTask('Слетать на луну');
-console.log(newTask.taskName);
-var tasksArray = [{
-  taskId: 1232132132,
-  taskName: 'Навернуть гречки'
-}, {
-  taskId: 654654654,
-  taskName: 'Пожамкать кота'
-}];
-/* show default task array */
-
-var test = new _init__WEBPACK_IMPORTED_MODULE_1__.Init({
-  tasksArray: tasksArray
-});
-console.log(test);
-/* add new task */
-
-test.addTask(newTask.taskId, newTask.taskName);
-console.log(test);
-/* add task in activate private variable */
-
-test.activateTask(newTask.taskId);
-console.log(test.test);
-/* View the running task in the console */
-
-test.runTask(newTask.taskId); // ! uncomment the line
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	__webpack_require__("./node_modules/@babel/polyfill/lib/index.js");
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/main.js");
+/******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=maind7c92517309b9c891d1b.js.map
+//# sourceMappingURL=main63af8dd590a297b31659.js.map
