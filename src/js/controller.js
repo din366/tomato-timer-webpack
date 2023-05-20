@@ -1,4 +1,4 @@
-import {app} from './main';
+import { app } from './main';
 
 class ControllerTomato {
   renderElem;
@@ -16,7 +16,7 @@ class ControllerTomato {
       this.renderElem.importanceButton.classList.contains('so-so') ?
         app.addTask(taskName, 'so-so') :
         this.renderElem.importanceButton.classList.contains('default') ?
-        app.addTask(taskName, 'default') : app.addTask(taskName, 'important');
+          app.addTask(taskName, 'default') : app.addTask(taskName, 'important');
 
       renderElem.input.value = ''; // clear input after submit
     });
@@ -25,6 +25,11 @@ class ControllerTomato {
     this.renderElem.buttonStart.addEventListener('click', (e) => {
       app.runTask();
       this.renderElem.buttonStart.disabled = true;
+      console.dir(document.querySelectorAll('.pomodoro-tasks__task-text'));
+      document.querySelectorAll('.pomodoro-tasks__task-text')
+        .forEach((elem) => elem.disabled = true);
+      document.querySelectorAll('.pomodoro-tasks__task-button')
+        .forEach((elem) => elem.disabled = true);
     });
 
     /* stop active task */
@@ -33,6 +38,10 @@ class ControllerTomato {
       if (res === true) { // if "res" returned current task is ok
         this.renderElem.buttonStart.disabled = false;
         this.renderElem.buttonStop.textContent = 'Стоп';
+        document.querySelectorAll('.pomodoro-tasks__task-text')
+          .forEach((elem) => elem.disabled = false);
+        document.querySelectorAll('.pomodoro-tasks__task-button')
+          .forEach((elem) => elem.disabled = false);
       }
     });
 
