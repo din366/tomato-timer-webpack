@@ -14,7 +14,7 @@
 
 :warning: В задеплоеной версии для демонстрации работы приложения установлены таймеры в 18 секунд на задачу и 5 секунд на отдых.
 
-<a href="https://gas-station-modelling.vercel.app" style="text-align: center;">Развернутое приложение на Vercel</a>
+<a href="https://tomato-timer-webpack.vercel.app" style="text-align: center;">Развернутое приложение на Vercel</a>
 
 <img style="text-align: center; max-width: 600px;"
   src="https://github.com/din366/images/blob/main/readme%20images/tomato-timer.png" alt="project image">
